@@ -26,6 +26,7 @@ getCurrentDayAndTimeBtn.addEventListener('click', currentDayAndTime);
 
 
 // ******************** 2 ********************//
+// print current window screen
 const printCurrentPageBtn = document.getElementById('print-current-bage-btn');
 
 const printCurrentWindowPage = () => {
@@ -36,6 +37,7 @@ printCurrentPageBtn.addEventListener('click', printCurrentWindowPage);
 
 
 // ******************** 3 ********************//
+// display current date dd/mm/yy
 const getCurrentDateBtn = document.getElementById('get-current-date-btn');
 const currentDateDisplay = document.getElementById('current-date');
 
