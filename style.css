@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 10px 40px;
+} 
+
+header {
+    margin: 20px auto;
+    text-align: center;
+}
+
+main {
+    margin: 20px auto;
+}
+
+h1 {
+    color: #1e8ce6;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+h4 {
+    padding-bottom: 15px;
+    text-decoration: underline;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 15px 0;
+    background: #1e8ce6;
+    background: linear-gradient(90deg, rgba(30, 140, 230, 1) 0%, rgba(95, 207, 232, 1) 50%, rgba(134, 230, 235, 1) 100%);
+    border: none;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.8rem;
+}
+
+button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.exercise-container {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #1e8ce6;
+}
+

@@ -1,3 +1,4 @@
+// ******************** 1 ********************//
 // fatching DOM elements
 const getCurrentDayAndTimeBtn = document.getElementById('get-current-day-and-time');
 const currentDayAndTimeDisplay = document.getElementById('current-day-and-time');
@@ -22,3 +23,11 @@ const currentDayAndTime = () => {
 };
 
 getCurrentDayAndTimeBtn.addEventListener('click', currentDayAndTime);
+
+
+// ******************** 2 ********************//
+const printCurrentPageBtn = document.getElementById('print-current-bage-btn');
+
+
+
+
