@@ -28,6 +28,30 @@ getCurrentDayAndTimeBtn.addEventListener('click', currentDayAndTime);
 // ******************** 2 ********************//
 const printCurrentPageBtn = document.getElementById('print-current-bage-btn');
 
+const printCurrentWindowPage = () => {
+    window.print();
+}
 
+printCurrentPageBtn.addEventListener('click', printCurrentWindowPage);
+
+
+// ******************** 3 ********************//
+const getCurrentDateBtn = document.getElementById('get-current-date-btn');
+const currentDateDisplay = document.getElementById('current-date');
+
+const currentDate = () => {
+    let today = new Date();
+    let dd = today.getDate();
+    let day = (dd < 10) ? `0${dd}` : dd;
+    let mm = today.getMonth() + 1
+    let month = (mm < 10) ? `0${mm}` : mm;
+    let year = today.getFullYear();
+
+    today = `${day}/${month}/${year}`
+
+    currentDateDisplay.innerHTML = `Today's date: ${today}`;
+}
+
+getCurrentDateBtn.addEventListener('click', currentDate);
 
 
