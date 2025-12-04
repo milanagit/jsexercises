@@ -57,3 +57,63 @@ const currentDate = () => {
 getCurrentDateBtn.addEventListener('click', currentDate);
 
 
+// ******************** 4 ********************//
+// Calculate Area of Triangle (Sides: 5, 6, 7)
+
+// The area of ​​any triangle whose sides are known can be calculated 
+// using Heron's formula. First, the half perimeter (\(s\)) of the triangle 
+// is calculated by adding all three sides and dividing by 2 (\(s=(a+b+c)/2\)). 
+// Then the area (\(P\)) is calculated as the square root of the product of the 
+// semi-perimeter and the difference of the semi-perimeter and each individual 
+// side (\(P=\sqrt{s(s-a)(s-b)(s-c)}\)).
+
+const getTriangleAreaBtn = document.getElementById('get-triangle-area-btn');
+const triangleAreaDisplay = document.getElementById('triangle-area');
+
+const calculateTriangleArea = () => {
+    let side1 = document.getElementById('triangle-side-1').value;
+    let side2 = document.getElementById('triangle-side-2').value;
+    let side3 = document.getElementById('triangle-side-3').value;
+    let form = document.getElementById('triangle-sides-form');
+
+    const regex = /^\s*(0\.[1-9]\d*|[1-9]\d*(\.\d+)?)\s*$/;
+
+    // For three sides to form a triangle, the sum of the lengths 
+    // of any two sides must be greater than the length of the third side, 
+    // a rule known as the Triangle Inequality Theorem.
+
+    // check if the correct sides are inputed
+    if (regex.test(side1.trim()) && regex.test(side2.trim()) && regex.test(side3.trim())) {
+        
+        // turn to value type from string to number, string is obtained by default thrugh input field
+        let s1 = parseFloat(side1);
+        let s2 = parseFloat(side2);
+        let s3 = parseFloat(side3);
+
+        // check sides
+        if (((s1 + s2) > s3) && ((s2 + s3) > s1) && ((s3 + s1) > s2)) {
+            let semiparameter = (s1 + s2 + s3) / 2;
+
+            let triangleArea = Math.sqrt(semiparameter * ((semiparameter - s1) * (semiparameter - s2) * (semiparameter - s3)));
+
+            triangleAreaDisplay.innerHTML = `Triangle area  for the triangle with sides ${s1}, ${s2} and ${s3} is : ${triangleArea}`;
+        } else {
+            triangleAreaDisplay.innerHTML = 'For three sides to form a triangle, the sum of the lengths of any two sides must be greater than the length of the third side, a rule known as the <strong>Triangle Inequality Theorem.</strong> <br> PLEASE TRY AGAIN! ';
+        }
+    } else {
+        triangleAreaDisplay.innerHTML = 'The value must be a positive number!';
+    }
+
+    // clear form and triangle sides values
+    side1 = '';
+    side2 = '';
+    side3 = '';
+    form.reset();
+    
+
+}
+
+getTriangleAreaBtn.addEventListener('click', calculateTriangleArea);
+
+
+
