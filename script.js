@@ -115,5 +115,55 @@ const calculateTriangleArea = () => {
 
 getTriangleAreaBtn.addEventListener('click', calculateTriangleArea);
 
+// ******************** 4 ********************//
+// Rotate String 'w3resource' Periodically
 
+// The JavaScript program continuously rotates the string 'w3resource' 
+// to the right by periodically moving the last character to the front. 
+// It uses the setInterval function to update the string every 100 milliseconds, 
+// modifying the text content of a specified HTML element by its ID.
 
+let currentRotationInterval;
+const rotatedWordBtn = document.getElementById('rotated-word-btn');
+const rotatedWordDisplay = document.getElementById('rotated-word-display');
+
+const rotateWord = () => {
+
+    if (currentRotationInterval) {
+        clearInterval(currentRotationInterval);
+    }
+
+    const getRotatedWord = document.getElementById('rotated-word').value;
+
+    if (!getRotatedWord) return;
+
+    let characterArray = [...getRotatedWord];
+
+    const characterArrayLength = characterArray.length;
+    let rotationCounter = 0;
+
+    rotatedWordDisplay.innerHTML = `Rotated word : ${getRotatedWord}`;
+
+    const intervalFunction = () => {
+        const lastCharacter = characterArray.pop();
+        characterArray.unshift(lastCharacter);
+
+        let rotatedWord = characterArray.join('');
+        rotatedWordDisplay.innerHTML = `Rotated word : ${rotatedWord}`;
+        rotationCounter++;
+
+        if (rotationCounter === characterArrayLength) {
+            clearInterval(currentRotationInterval);
+
+            setTimeout(() => {
+                rotationCounter = 0;
+
+                currentRotationInterval = setInterval(intervalFunction, 100);
+            }, 1000)
+        }
+    };
+
+    currentRotationInterval = setInterval(intervalFunction, 100);
+}
+
+rotatedWordBtn.addEventListener('click', rotateWord);
