@@ -115,7 +115,7 @@ const calculateTriangleArea = () => {
 
 getTriangleAreaBtn.addEventListener('click', calculateTriangleArea);
 
-// ******************** 4 ********************//
+// ******************** 5 ********************//
 // Rotate String 'w3resource' Periodically
 
 // The JavaScript program continuously rotates the string 'w3resource' 
@@ -167,3 +167,34 @@ const rotateWord = () => {
 }
 
 rotatedWordBtn.addEventListener('click', rotateWord);
+
+
+// ******************** 6 ********************//
+// The JavaScript program checks if a given year is a leap year 
+// by determining if it is divisible by 4 but not by 100, or if 
+// it is divisible by 400. It uses conditional statements to 
+// implement these rules and then prints whether the year is a 
+// leap year or not.
+
+// select dropdown initial set
+const selectElement = document.getElementById('leap-year-to-check');
+const startYear = 1;         // Starting year (1 AD)
+const endYear = 3000;          // Ending year
+const currentYear = new Date().getFullYear(); // Get the current year (e.g., 2025)
+
+// Loop through the years from 1 to 3000
+for (let year = startYear; year <= endYear; year++) {
+    const option = document.createElement('option');
+    
+    // Set the option's value and displayed text to the year number
+    option.value = year;
+    option.textContent = year;
+
+    // Check if the current year matches the year in the loop
+    if (year === currentYear) {
+            // Set the current year as the default selected option
+            option.selected = true;
+    }
+    
+    selectElement.appendChild(option);
+}

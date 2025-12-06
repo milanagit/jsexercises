@@ -68,7 +68,8 @@ label {
     margin-bottom: 5px;
 }
 
-input {
+input,
+select {
     margin-bottom: 10px;
     max-width: 250px;
     height: 1.5rem;
