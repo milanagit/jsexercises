@@ -176,6 +176,11 @@ rotatedWordBtn.addEventListener('click', rotateWord);
 // implement these rules and then prints whether the year is a 
 // leap year or not.
 
+const leapYearToCheckBtn = document.getElementById('leap-year-to-check-btn');
+const leapYearStatementDisplay = document.getElementById('leap-year-statement-display');
+let selectedYearValue = '';
+let selectedYear = '';
+
 // select dropdown initial set
 const selectElement = document.getElementById('leap-year-to-check');
 const startYear = 1;         // Starting year (1 AD)
@@ -197,4 +202,19 @@ for (let year = startYear; year <= endYear; year++) {
     }
     
     selectElement.appendChild(option);
+
 }
+
+// Check leap year
+const checkIfLeapYear = () => {
+    selectedYearValue = selectElement.value;
+    selectedYear = parseFloat(selectedYearValue);
+
+    if ((selectedYear % 4 === 0 && selectedYear % 100 !== 0) || selectedYear % 400 === 0) {
+        leapYearStatementDisplay.innerHTML = `The selected year ${selectedYear} is LEAP year`;
+    } else {
+        leapYearStatementDisplay.innerHTML = `The selected year ${selectedYear} is NOT LEAP year`;
+    }
+};
+
+leapYearToCheckBtn.addEventListener('click', checkIfLeapYear);
