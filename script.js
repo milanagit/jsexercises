@@ -178,7 +178,6 @@ rotatedWordBtn.addEventListener('click', rotateWord);
 
 const leapYearToCheckBtn = document.getElementById('leap-year-to-check-btn');
 const leapYearStatementDisplay = document.getElementById('leap-year-statement-display');
-let selectedYearValue = '';
 let selectedYear = '';
 
 // select dropdown initial set
@@ -207,8 +206,7 @@ for (let year = startYear; year <= endYear; year++) {
 
 // Check leap year
 const checkIfLeapYear = () => {
-    selectedYearValue = selectElement.value;
-    selectedYear = parseFloat(selectedYearValue);
+    selectedYear = parseInt(selectElement.value);
 
     if ((selectedYear % 4 === 0 && selectedYear % 100 !== 0) || selectedYear % 400 === 0) {
         leapYearStatementDisplay.innerHTML = `The selected year ${selectedYear} is LEAP year`;
@@ -218,3 +216,103 @@ const checkIfLeapYear = () => {
 };
 
 leapYearToCheckBtn.addEventListener('click', checkIfLeapYear);
+
+// ******************** 7 ********************//
+/**
+    * Function to initialize the select element and set up the event listener
+    * for finding the day of the week for January 1st.
+    */
+function initializeJanuaryFirstFinder() {
+    // DOM elements selection.
+    const yearSelect = document.getElementById('first-january-year');
+    const checkButton = document.getElementById('first-january-year-btn');
+    const resultDisplay = document.getElementById('first-january-year-display');
+
+    const MIN_YEAR = 2014;
+    const MAX_YEAR = 2050;
+
+    // --- 1. Populate the Select Element ---
+
+    // Add a default, disabled option prompt.
+    let defaultOption = document.createElement('option');
+    defaultOption.textContent = "Select a year";
+    defaultOption.value = ""; // Empty value for validation
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    yearSelect.appendChild(defaultOption);
+
+    // Loop through the years from 2014 to 2050 and create <option> elements.
+    for (let year = MIN_YEAR; year <= MAX_YEAR; year++) {
+        let option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+    }
+
+    // --- 2. Define the Calculation Function ---
+
+    /**
+     * Calculates and displays the day of the week for January 1st of the selected year.
+     */
+    function calculateJanuaryFirstDay() {
+        // Get the currently selected year (value is a string).
+        const selectedYearString = yearSelect.value;
+        
+        // Basic validation: Check if a year was actually selected.
+        if (!selectedYearString) {
+            resultDisplay.textContent = "Please select a valid year.";
+            resultDisplay.style.color = "red";
+            return;
+        }
+
+        // Convert the selected year to an integer.
+        const year = parseInt(selectedYearString);
+
+        // Create a Date object for January 1st of the selected year.
+        // Month is 0-indexed (0 = January).
+        const januaryFirst = new Date(year, 0, 1);
+
+        // The getDay() method returns the day of the week (0 = Sunday, 6 = Saturday).
+        const dayIndex = januaryFirst.getDay();
+
+        // Array of day names for lookup.
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        // Get the corresponding day name.
+        const dayName = daysOfWeek[dayIndex];
+
+        // --- 3. Display the Result ---
+
+        resultDisplay.textContent = `January 1st, ${year} falls on a ${dayName}.`;
+    }
+
+    // --- 4. Attach the Event Listener ---
+
+    // Attach the calculation function to the button's click event.
+    checkButton.addEventListener('click', calculateJanuaryFirstDay);
+}
+
+// Call the initialization function when the page loads to set everything up.
+// It's best practice to wait for the DOM content to be fully loaded.
+document.addEventListener('DOMContentLoaded', initializeJanuaryFirstFinder);
+
+
+/*  !!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Poziv prve funkcije
+    initializeJanuaryFirstFinder();
+
+    // 2. Poziv druge funkcije
+    setupFormValidation();
+
+    // 3. Poziv treće funkcije
+    initializeImageSlider();
+    
+    // Prednost: Brzo dodavanje koda, bez potrebe za definisanjem jedne 'master' funkcije.
+    // Mana: Kod može postati nepregledan ako ima mnogo linija logike direktno ovde.
+});
+
+// Funkcije moraju i dalje biti definisane negde u vašem kodu:
+function initializeJanuaryFirstFinder() { /* ... */ //}
+// function setupFormValidation() { /* ... */ }
+// function initializeImageSlider() { /* ... */ }
