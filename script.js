@@ -287,11 +287,39 @@ function initializeJanuaryFirstFinder() {
     checkButton.addEventListener('click', calculateJanuaryFirstDay);
 }
 
+// ******************** 8 ********************//
+function guessANumber() {
+    const guessNumBtn = document.getElementById('guess-a-number-btn');
+
+    const guessNum = () => {
+        //let guessNumImput = parseInt(prompt('Unesi broj od 1 do 10'));
+        const regexNumFrom0To10 = /^(10|[1-9])$/;
+        let guessNumImput = prompt('Unesi broj od 1 do 10');
+        let guessNumDisplay = document.getElementById('guess-a-number-display');
+        let randomIntegerNum = String(Math.floor(Math.random() * 10) + 1);
+
+        console.log(randomIntegerNum);
+
+        if (regexNumFrom0To10.test(guessNumImput)) {
+            if(guessNumImput ===  randomIntegerNum) {
+                guessNumDisplay.innerHTML = 'Good Work';
+            } else {
+                guessNumDisplay.innerHTML = 'Not matched';
+            }
+        } else {
+            alert('Not a number');
+        }
+
+    };
+
+    guessNumBtn.addEventListener('click', guessNum);
+}
+
 
 /* ****************** CALL FUNCTIONS ****************** */
-// Call the initialization function when the page loads to set everything up.
-// It's best practice to wait for the DOM content to be fully loaded.
 document.addEventListener('DOMContentLoaded', function() {
+    // Call the initialization function when the page loads to set everything up.
+    // It's best practice to wait for the DOM content to be fully loaded.
     displayCurrentDayAndTime();
     printCurrentWindowContents();
     getCurrentDateInVariousFormats();
@@ -299,5 +327,6 @@ document.addEventListener('DOMContentLoaded', function() {
     rotateStringPeriodically();
     checkLeapYearGregorian();
     initializeJanuaryFirstFinder();
+    guessANumber();
 });
     
