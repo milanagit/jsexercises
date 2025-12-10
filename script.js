@@ -315,6 +315,31 @@ function guessANumber() {
     guessNumBtn.addEventListener('click', guessNum);
 }
 
+// ******************** 9 ********************//
+function daysTillChristmas() {
+    const daysTillChristmasBtn = document.getElementById('days-to-christmas-btn');
+    const daysTillChristmasDisplay = document.getElementById('days-to-christmas-display');
+    const today = new Date();
+    const christmas = new Date(today.getFullYear(), 1, 7);
+    const oneDay = 1000 * 60 * 60 * 24;
+    let daysTillChristmasVar = '';
+
+    // Check if current date is after January 7th
+    if (today.getMonth() == 1 && today.getDate() > 7) {
+        christmas.setFullYear(christmas.getFullYear() + 1);
+    }
+
+    daysTillChristmasVar = Math.ceil((christmas.getTime() - today.getTime()) / (oneDay));
+
+    console.log(today.getMonth());
+    console.log(today.getDate());
+    console.log(christmas.getTime());
+    console.log(today.getTime());
+    console.log(oneDay);
+    console.log(daysTillChristmasVar);
+
+}
+
 
 /* ****************** CALL FUNCTIONS ****************** */
 document.addEventListener('DOMContentLoaded', function() {
@@ -328,5 +353,6 @@ document.addEventListener('DOMContentLoaded', function() {
     checkLeapYearGregorian();
     initializeJanuaryFirstFinder();
     guessANumber();
+    daysTillChristmas();
 });
     
