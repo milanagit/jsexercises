@@ -319,21 +319,26 @@ function guessANumber() {
 function daysTillChristmas() {
     const daysTillChristmasBtn = document.getElementById('days-to-christmas-btn');
     const daysTillChristmasDisplay = document.getElementById('days-to-christmas-display');
-    const today = new Date();
-    const christmas = new Date(today.getFullYear(), 0, 7);
     const oneDay = 1000 * 60 * 60 * 24;
-    let daysTillChristmasVar = '';
+    
+    const daysTillChristmasFunct = () => {
+        const today = new Date();
+        let christmasYear = today.getFullYear();
 
-    // Check if current date is after January 7th
-    if (today.getMonth() >= 1 && today.getDate() > 7) {
+        let christmas = new Date(christmasYear, 0, 7); 
         
-        christmas.setFullYear(christmas.getFullYear() + 1);
-        
-    }
+        if (today.getTime() > christmas.getTime()) {
+            
+            christmas.setFullYear(christmasYear + 1);
+            
+        }
 
-    daysTillChristmasVar = Math.ceil((christmas.getTime() - today.getTime()) / (oneDay));
+        const daysTillChristmasVar = Math.ceil((christmas.getTime() - today.getTime()) / oneDay);
 
-    daysTillChristmasDisplay.innerHTML = `Days till Christmas: ${daysTillChristmasVar}`;
+        daysTillChristmasDisplay.innerHTML = `Days till Christmas: ${daysTillChristmasVar}`;
+    };
+
+    daysTillChristmasBtn.addEventListener('click', daysTillChristmasFunct);
 
 }
 
