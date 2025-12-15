@@ -342,6 +342,42 @@ function daysTillChristmas() {
 
 }
 
+// ******************** 10 ********************//
+function multiplyAndDivision() {
+    const multiplyBtn = document.getElementById('multidivision-multiply-btn');
+    const divisionBtn = document.getElementById('multidivision-divide-btn');
+    const multidivisionDisplay = document.getElementById('multidivision-display');
+    const firstNum = document.getElementById('first-num-multidivision');
+    const secondNum = document.getElementById('second-num-multidivision');
+
+    function multiplyNumbers() {
+        let firstNumVal = firstNum.value;
+        let secondNumVal = secondNum.value;
+        let multiplicationValue;
+
+        multiplicationValue = Number(firstNumVal) * Number(secondNumVal);
+
+        multidivisionDisplay.innerHTML = `${firstNumVal} * ${secondNumVal} is ${multiplicationValue}`;
+        firstNum.value = '';
+        secondNum.value = '';
+    }
+
+    function devideNumbers() {
+        let firstNumVal = firstNum.value;
+        let secondNumVal = secondNum.value;
+        let divisionValue;
+
+        divisionValue = Number(firstNumVal) / Number(secondNumVal);
+
+        multidivisionDisplay.innerHTML = `${firstNumVal} / ${secondNumVal} is ${divisionValue}`;
+        firstNum.value = '';
+        secondNum.value = '';
+    }
+
+    multiplyBtn.addEventListener('click', multiplyNumbers);
+    divisionBtn.addEventListener('click', devideNumbers);
+}
+
 
 /* ****************** CALL FUNCTIONS ****************** */
 document.addEventListener('DOMContentLoaded', function() {
@@ -356,5 +392,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeJanuaryFirstFinder();
     guessANumber();
     daysTillChristmas();
+    multiplyAndDivision();
 });
     
