@@ -378,6 +378,46 @@ function multiplyAndDivision() {
     divisionBtn.addEventListener('click', devideNumbers);
 }
 
+function convertTemperatureBetweenCelsiusAndFahrenheit() {
+    const getFahrenheit = document.getElementById('get-fahrenheit');
+    const getCelsius = document.getElementById('get-celsius');
+    const getCalculationBtn = document.getElementById('calculate-fahr-cels-btn');
+    const getCalculationDisplay = document.getElementById('calculate-fahr-cels-display');
+    let numFahr = '';
+    let numCels = '';
+    let toCels = 0;
+    let toFahr = 0;
+
+    // Functions for shifting focus and turn string to number
+    getFahrenheit.addEventListener('click', () => {
+        getCelsius.value = '';
+    });
+
+    getCelsius.addEventListener('click', () => {
+        getFahrenheit.value = '';
+    });
+
+    function calculateDegries() {
+        numFahr = parseInt(getFahrenheit.value);
+        numCels = parseInt(getCelsius.value);
+
+        if(numFahr) {
+            // calculate Celsius
+            toCels = ((numFahr - 32) / 9) * 5;
+            getCalculationDisplay.innerHTML = `${numFahr} is ${toCels} Celsius`;
+        } else if(numCels) {
+            // calculate Fahrenheit
+            toFahr = ((numCels / 5) * 9) + 32;
+            getCalculationDisplay.innerHTML = `${numCels} is ${toFahr} Fahrenheits`;
+        } else {
+            getCalculationDisplay.innerHTML = `Give me a number`;
+        }
+    }
+
+    getCalculationBtn.addEventListener('click', calculateDegries);
+
+}
+
 
 /* ****************** CALL FUNCTIONS ****************** */
 document.addEventListener('DOMContentLoaded', function() {
@@ -393,5 +433,6 @@ document.addEventListener('DOMContentLoaded', function() {
     guessANumber();
     daysTillChristmas();
     multiplyAndDivision();
+    convertTemperatureBetweenCelsiusAndFahrenheit();
 });
     
