@@ -378,15 +378,16 @@ function multiplyAndDivision() {
     divisionBtn.addEventListener('click', devideNumbers);
 }
 
+// ******************** 11 ********************//
 function convertTemperatureBetweenCelsiusAndFahrenheit() {
     const getFahrenheit = document.getElementById('get-fahrenheit');
     const getCelsius = document.getElementById('get-celsius');
     const getCalculationBtn = document.getElementById('calculate-fahr-cels-btn');
     const getCalculationDisplay = document.getElementById('calculate-fahr-cels-display');
-    let numFahr = '';
-    let numCels = '';
-    let toCels = 0;
-    let toFahr = 0;
+    let numFahr, 
+    numCels, 
+    toCels, 
+    toFahr;
 
     // Functions for shifting focus and turn string to number
     getFahrenheit.addEventListener('click', () => {
@@ -418,6 +419,19 @@ function convertTemperatureBetweenCelsiusAndFahrenheit() {
 
 }
 
+// ******************** 12 ********************//
+function getWebsiteUrl() {
+    const getWbsiteUrlBtn = document.getElementById('get-wbsite-url-btn');
+    const getWebsiteUrlDisplay = document.getElementById('get-wbsite-url-display');
+
+    const websiteUrl = () => {
+        let url = document.URL;
+        getWebsiteUrlDisplay.innerHTML = `Website URL is: ${url}`;
+    };
+
+    getWbsiteUrlBtn.addEventListener('click', websiteUrl);
+}
+
 
 /* ****************** CALL FUNCTIONS ****************** */
 document.addEventListener('DOMContentLoaded', function() {
@@ -434,5 +448,6 @@ document.addEventListener('DOMContentLoaded', function() {
     daysTillChristmas();
     multiplyAndDivision();
     convertTemperatureBetweenCelsiusAndFahrenheit();
+    getWebsiteUrl();
 });
     
